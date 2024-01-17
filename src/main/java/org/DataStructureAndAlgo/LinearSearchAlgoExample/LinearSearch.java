@@ -1,4 +1,4 @@
-package org.datastructure.Algorithms;
+package org.DataStructureAndAlgo.LinearSearchAlgoExample;
 
 public class LinearSearch {
     /* 
