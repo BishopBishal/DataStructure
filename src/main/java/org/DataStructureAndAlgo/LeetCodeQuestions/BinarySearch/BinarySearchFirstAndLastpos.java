@@ -50,7 +50,7 @@ public class BinarySearchFirstAndLastpos {
 
         int start=0;
         int end=nums.length-1;
-        int mid=0;
+        int mid;
         int ans=-1;
         while(start <= end)
         {
