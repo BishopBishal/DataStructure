@@ -30,8 +30,8 @@ public class BinarySearchSmallestNumber {
 
        public static void main(String[] args) {
         char[] charArray = {'x','x','y','y'};
-       char[] charArray2={'c','f','j'};
-       char charTarget='f';
+       char[] charArray2={'a','d','f','j','x'};
+       char charTarget='g';
 
        char smallestChar = findLexicographicallyGreater(charArray2,charTarget);
        System.out.println("The smallest character that is lexicographically greater than "+charTarget +" in charArray is "+smallestChar);
@@ -43,7 +43,7 @@ public class BinarySearchSmallestNumber {
         int mid=0;
         while (start<=end) {
          mid=start+((end- start)/2);
-         
+            System.out.println(mid);
          if (charArray[mid]>charTarget) {
              end=mid-1;
          }

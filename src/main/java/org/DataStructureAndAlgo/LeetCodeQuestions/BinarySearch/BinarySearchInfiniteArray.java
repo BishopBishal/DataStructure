@@ -19,23 +19,58 @@ public class BinarySearchInfiniteArray {
     public static void main(String[] args){
         int[] array=new int[]{3,5,6,7,10,15,27};
         
-        int target = 10; // element to be searched
+        int target =15; // element to be searched
         int start = 0;
         int end = 1;
+        int i=2;
         try {
-            while(target > array[end])
+            /*while(target > array[end])
             {
                 int newStart=end+1;
                 end=end+(end-start+1)*2;
                 start=newStart;
             }
+            */
 
-            int index=BinarySearch(array,start,end,target);
-          System.out.printf("Element Found at "+index);
-           
+            if(array[start]==target)
+            {
+                System.out.println("Element Found at ="+start);
+                System.exit(0);
+            }
+            else if (array[end] == target)
+            {
+                System.out.println("Element Found at ="+end);
+                System.exit(0);
+            }
+            else {
+                while (target > array[end]) {
+                    System.out.println("Element to Found =" + target + " Array[end]=" + array[end]);
+                    if (array[start] == target) {
+                        System.out.println("Element Found at =" + start);
+                        System.exit(0);
+                    } else if (array[end] == target) {
+                        System.out.println("Element Found at =" + start);
+                        System.exit(0);
+                    } else {
+                        int temp = end;
+                        int square = Double.valueOf(Math.pow((double) 2, (double) i)).intValue();
+                        System.out.println("Square value " + square);
+                        end = square + end;
+                        System.out.println("End mid " + end + " start = " + start);
+                        start = temp + 1;
+                        i++;
+                        System.out.println("Start = " + start + " end = " + end);
+                    }
+                }
+
+
+                System.out.println("final Start = " + start + "final end = " + end);
+                int index = BinarySearch(array, start, end, target);
+                System.out.printf("Element Found at " + index);
+            }
         }catch (IndexOutOfBoundsException e)
         {
-            System.out.print("Element not Found !!");
+            System.out.print("Element not Found !!" +e.getMessage());
         }
     }
 
@@ -53,7 +88,7 @@ public class BinarySearchInfiniteArray {
                  end=mid-1;
              }
              else {
-                 return arr[mid];
+                 return mid;
              }
          }
         return -1;

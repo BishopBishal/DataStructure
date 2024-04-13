@@ -8,7 +8,7 @@ public class FloorNumberBinarySearch {
      * Find the floor of the number for the given array where target is 15.Array - {2,3,5,9,14,16,18}
      * 
      * where the floor number for the target number is 14 because the floor number is the number which 
-     * is greatest element  in the array less than or equal to target
+     * is the greatest element  in the array less than or equal to target
      */
 
      public static void main(String[] args) {

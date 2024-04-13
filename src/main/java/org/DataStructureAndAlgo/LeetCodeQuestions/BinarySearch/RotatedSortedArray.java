@@ -4,6 +4,9 @@ public class RotatedSortedArray {
 
     /*
     *
+    * https://leetcode.com/problems/search-in-rotated-sorted-array/description/
+    *
+    *
     * 33. Search in Rotated Sorted Array
 Medium
 Topics
@@ -35,10 +38,13 @@ Output: -1
 
 
     public static void main(String[] args) {
-        int[] arr= {1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1};
+        //int[] arr= {6,7,8,9,1,2,3,4,5};
+        int[] arr= {1,1,1,1,1,2,1,1,1};
         int target=2;
         int index=findPivotOfArray(arr);
-        System.out.println("Index found of pivot is - "+index);
+        int peek=findPivotInRotatedSearchArrayWithDuplicates(arr);
+        System.out.println("Index found of pivot is - "+peek + " index = "+index);
+        index=peek;
         if(index==-1)
         {
             index=binarySearch(arr,target,0,arr.length-1);
@@ -52,7 +58,7 @@ Output: -1
        }
        if(target >= arr[0])
        {
-           index=binarySearch(arr,target,0,index-1);
+           index=binarySearch(arr,target,0,index);
            System.out.println("Element found at left side of the array is - "+index);
            return;
        }
@@ -85,6 +91,32 @@ Output: -1
             }
         }
         return -1;
+    }
+
+    public  static int findPivotInRotatedSearchArrayWithDuplicates(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
+        while (start < end) {
+            int mid = end - (end - start) / 2;
+            if (end > mid && arr[mid] > arr[mid + 1]) {
+                return mid;
+            } else if (start < mid && arr[mid - 1] > arr[mid]) {
+                return mid - 1;
+            } else if (arr[mid] == arr[start] && arr[mid]== arr[end]) {
+                if(arr[start]  >  arr[start+1])
+                    return arr[start];
+                start++;
+                if(arr[end-1] > arr[end])
+                    return end-1;
+                end--;
+            } else if (arr[mid] > arr[start] || arr[mid] == arr[start] && arr[mid] > arr[end]) {
+                start=mid+1;
+            }
+            else {
+                end = mid-1;
+            }
+        }
+        return start;
     }
 
     private static int binarySearch(int[] arr,int target,int start ,int end) {
